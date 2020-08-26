@@ -49,12 +49,15 @@
             </tbody>
             <tfoot>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Название переменной</th>
+                <th>Русский</th>
+                <th>English</th>
+                <th>Қазақша</th>
+                <th>Ўзбекча</th>
+                <th>O'zbekcha</th>
+                <th>Дата создание</th>
+                <th></th>
+                <th></th>
             </tr>
             </tfoot>
         </table>
