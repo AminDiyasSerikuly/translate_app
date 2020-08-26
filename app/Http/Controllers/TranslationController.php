@@ -18,6 +18,8 @@ class TranslationController extends Controller
      */
     public function index()
     {
+        var_dump('hola');
+        die();
         $translates = Translation::all();
         return view('translation.index', ['translates' => $translates]);
     }
