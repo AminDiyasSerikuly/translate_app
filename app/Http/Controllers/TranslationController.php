@@ -133,7 +133,6 @@ class TranslationController extends Controller
     {
         $language = $request->input('lang');
         $language ?: $language = 'en_translate';
-        Cache::put('translations', Translation::all());
         $translations = Cache::get('translations');
 
         $translations = (collect($translations)->pluck($language, 'slug'));
