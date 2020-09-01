@@ -26,7 +26,7 @@
             <tbody>
             @foreach($translates as $translate)
                 <tr>
-                    <td>{{$translate->slug}}</td>
+                    <td style="@if(in_array($translate->slug, $duplicates)) {{'background-color:red;'}} @endif">{{$translate->slug}}</td>
                     <td>{{$translate->ru_translate}}</td>
                     <td>{{$translate->en_translate}}</td>
                     <td>{{$translate->kz_translate}}</td>
