@@ -60,7 +60,7 @@ class TranslationController extends Controller
             $messages = [0 => 'Произошла ошибка'];
         }
         \session()->flash('messages', $messages);
-        return back()->withInput($request->all());
+        return redirect('/translation/');
     }
 
     /**
