@@ -19,15 +19,16 @@ class ImportFromExcelToMysql2 extends Seeder
         $oz = 5;
 
         if ($xlsx = SimpleXLSX::parse(public_path('translate2.xlsx'))) {
+
             foreach ($xlsx->rows() as $key => $item) {
                 if ($key != 0) {
                     \App\Translation::create([
-                        'slug' => $item[$slug],
-                        'en_translate' => $item[$en],
-                        'ru_translate' => $item[$ru],
-                        'kz_translate' => $item[$kz],
-                        'uz_translate' => $item[$uz],
-                        'oz_translate' => $item[$oz],
+                        'slug' => isset($item[$slug]) ? $item[$slug] : '',
+                        'en_translate' => (isset($item[$en]) ? $item[$en] : ''),
+                        'ru_translate' => (isset($item[$ru]) ? $item[$ru] : ''),
+                        'kz_translate' => (isset($item[$kz]) ? $item[$kz] : ''),
+                        'uz_translate' => (isset($item[$uz]) ? $item[$uz] : ''),
+                        'oz_translate' => (isset($item[$oz]) ? $item[$oz] : ''),
                     ]);
                 }
             }
