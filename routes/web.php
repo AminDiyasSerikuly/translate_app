@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+Route::redirect('/home', '/translation');
 Route::get('/translation/get', 'TranslationController@getTranslation')->middleware('auth');
 Route::resource('translation', 'TranslationController')->middleware('auth');
 
