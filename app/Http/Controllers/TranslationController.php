@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Translation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-
 
 
 class TranslationController extends Controller
@@ -19,8 +19,17 @@ class TranslationController extends Controller
      */
     public function index()
     {
+        $duplicateSlugs = DB::table('translation')
+            ->select('slug')
+            ->groupBy('slug')
+            ->havingRaw('COUNT(*) > 1')
+            ->get();
+
+
+        $duplicateSlugs = collect($duplicateSlugs)->pluck('slug')->all();
+
         $translates = Translation::all();
-        return view('translation.index', ['translates' => $translates]);
+        return view('translation.index', ['translates' => $translates, 'duplicates' => $duplicateSlugs]);
     }
 
     /**
@@ -60,7 +69,7 @@ class TranslationController extends Controller
             $messages = [0 => 'Произошла ошибка'];
         }
         \session()->flash('messages', $messages);
-        return redirect('/translation/');
+        return redirect('/translation');
     }
 
     /**
@@ -113,7 +122,7 @@ class TranslationController extends Controller
             $messages = [0 => 'Произошла ошибка при изменение'];
         }
         \session()->flash('messages', $messages);
-        return back()->withInput($request->all());
+        return redirect('translation');
     }
 
     /**
