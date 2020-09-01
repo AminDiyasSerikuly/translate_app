@@ -15,3 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/translation/get', 'TranslationController@getTranslation');
 Route::resource('translation', 'TranslationController')->middleware('web');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
