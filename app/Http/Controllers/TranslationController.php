@@ -104,11 +104,11 @@ class TranslationController extends Controller
     public function update(Request $request, Translation $translation)
     {
         $validate = Validator::make($request->all(), [
-            'slug' => 'required',
-            'en_translate' => 'required',
-            'ru_translate' => 'required',
-            'uz_translate' => 'required',
-            'oz_translate' => 'required',
+            //   'slug' => 'required',
+            //   'en_translate' => 'required',
+            //   'ru_translate' => 'required',
+            //   'uz_translate' => 'required',
+            //   'oz_translate' => 'required',
         ]);
         if ($validate->fails()) {
             \session()->flash('messages', $validate->errors()->all());
