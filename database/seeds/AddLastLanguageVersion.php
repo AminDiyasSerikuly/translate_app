@@ -18,7 +18,7 @@ class AddLastLanguageVersion extends Seeder
         $uz = 4;
         $oz = 5;
 
-        if ($xlsx = SimpleXLSX::parse(public_path('translate3.xlsx'))) {
+        if ($xlsx = SimpleXLSX::parse(public_path('translate4.xlsx'))) {
 
             foreach ($xlsx->rows() as $key => $item) {
                 if ($key != 0) {
